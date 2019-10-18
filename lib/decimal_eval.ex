@@ -27,6 +27,7 @@ defmodule DecimalEval do
     operators = [+: 2, -: 2, *: 2, /: 2, ==: 2, !=: 2, <: 2, <=: 2, >: 2, >=: 2]
 
     quote do
+      # `if` adds scope and we need it so that imports don't leak outside
       if true do
         import Kernel, except: unquote(operators)
         import DecimalEval, only: unquote(operators)
